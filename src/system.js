@@ -7,23 +7,26 @@ var modules = {};
 var DEFINED = 2;
 var RESOLVED = 3;
 
+var current;
 function Module(src) {
-	this.url = src;
+	this.meta = {
+		url: src
+	};
 	this.exports = {};
 }
+function exportMember(name, value) {
+	current.exports[name] = value;
+};
 Module.prototype.init = function(stack) {
 	if (stack.indexOf(this) >= 0) {
 		return;
 	}
+	current = this;
+	var factory = this.initor(exportMember, this);
+	current = null;
 	stack.push(this);
 	var values = this.deps.map(function(dep) {
-		switch (dep) {
-			case 'module':
-				return this;
-			case 'exports':
-				return this.exports;
-		}
-		var url = new URL(dep, this.url);
+		var url = new URL(dep, this.meta.url);
 		var href = url.href;
 		url = null;
 		var module = modules[href];
@@ -36,19 +39,27 @@ Module.prototype.init = function(stack) {
 		return module.exports;
 	}, this);
 	stack.pop();
-	this.initor.apply(undefined, values);
+	if (factory.setters) {
+		factory.setters.forEach(setDepModule, values);
+	}
+	factory.execute();
 	this.status = RESOLVED;
 };
+function setDepModule(setter, i) {
+	setter(this[i]);
+}
 
-window.define = function(deps, initor) {
-	var src = document.currentScript.src;
-	var module = modules[src];
-	if (module) return;
-	module = new Module(src);
-	module.status = DEFINED;
-	module.deps = deps;
-	module.initor = initor;
-	modules[src] = module;
+window.System = {
+	register: function(deps, initor) {
+		var src = document.currentScript.src;
+		var module = modules[src];
+		if (module) return;
+		module = new Module(src);
+		module.status = DEFINED;
+		module.deps = deps;
+		module.initor = initor;
+		modules[src] = module;
+	}
 };
 
 window.__rollup_dynamic_import__ = function(src, base, deps, css, imgs) {

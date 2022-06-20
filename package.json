@@ -1,16 +1,30 @@
 {
-  "name": "rollup-runtime",
-  "version": "0.0.0",
-  "description": "module runtime for rollup",
-  "main": "dist/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "rollup",
-    "runtime",
-    "module"
-  ],
-  "author": "linsk",
-  "license": "MIT"
+	"name": "rollup-runtime",
+	"version": "0.0.0",
+	"description": "module runtime for rollup",
+	"main": "dist/index.js",
+	"scripts": {
+		"build:es2015-esm": "rollup -c rollup/rollup.config.es2015.esm.js",
+		"build:modern-amd": "rollup -c rollup/rollup.config.modern.amd.js",
+		"build:modern-sys": "rollup -c rollup/rollup.config.modern.sys.js",
+		"build:compat-amd": "rollup -c rollup/rollup.config.compat.amd.js",
+		"build:compat-sys": "rollup -c rollup/rollup.config.compat.sys.js"
+	},
+	"keywords": [
+		"rollup",
+		"runtime",
+		"module"
+	],
+	"author": "linsk",
+	"license": "MIT",
+	"devDependencies": {
+		"@rollup/plugin-alias": "^3.1.9",
+		"@rollup/plugin-inject": "^4.0.4",
+		"rollup": "^2.75.6",
+		"rollup-plugin-import": "^1.0.2",
+		"rollup-plugin-polyfill-inject": "^1.0.4"
+	},
+	"dependencies": {
+		"sky-core": "^0.6.2"
+	}
 }

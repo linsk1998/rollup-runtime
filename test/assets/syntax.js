@@ -1,0 +1,3 @@
+abstract,int,short,boolean,interface,static,byte,long,char,final,native,synchronized,float,package,throws,goto,private,transient,implements,protected,volatile,double,public,supper,implements,package,public,interface,private,static,let,protected,yield
+
+break,do,instanceof,typeof,case,else,new,var,catch,finally,return,void,continue,for,switch,while,debugger,function,this,with,default,if,throw,delete,in,try,enum,export,extends,super,class,const,debugger,import,class,enum,extends,const,export,import
