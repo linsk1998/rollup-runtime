@@ -42,7 +42,9 @@ Module.prototype.init = function(stack) {
 	if (factory.setters) {
 		factory.setters.forEach(setDepModule, values);
 	}
+	current = this;
 	factory.execute();
+	stack.push(this);
 	this.status = RESOLVED;
 };
 function setDepModule(setter, i) {

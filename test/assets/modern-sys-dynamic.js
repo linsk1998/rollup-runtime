@@ -1,7 +1,9 @@
-define([
-	'exports'
-], function(exports) {
+System.register([], function(exports) {
 	'use strict';
 
-	exports.dynamic = "dynamic";
+	return {
+		execute: function() {
+			exports('dynamic',"dynamic");
+		}
+	};
 });

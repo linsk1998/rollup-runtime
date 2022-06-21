@@ -52,4 +52,21 @@ define([
 			QUnit.start();
 		});
 	});
+	
+	QUnit.asyncTest('es2015-error', function (assert) {
+		expect(2);
+		QUnit.stop(1);
+		__rollup_dynamic_import__(
+			"./404.js", "./assets/modern-amd.js", [], [], []
+		).then(undefined, function (e) {
+			assert.ok(e instanceof Error, e.message);
+			QUnit.start();
+		});
+		__rollup_dynamic_import__(
+			"./syntax.js", "./assets/modern-amd.js", [], [], []
+		).then(undefined, function (e) {
+			assert.ok(e instanceof Error, e.message);
+			QUnit.start();
+		});
+	});
 });
