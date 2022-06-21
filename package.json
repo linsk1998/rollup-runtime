@@ -2,7 +2,7 @@
 	"name": "rollup-runtime",
 	"version": "0.0.0",
 	"description": "module runtime for rollup",
-	"main": "dist/index.js",
+	"module": "dist/rollup-runtime-es2015-esm",
 	"scripts": {
 		"build:es2015-esm": "rollup -c rollup/rollup.config.es2015.esm.js",
 		"build:modern-amd": "rollup -c rollup/rollup.config.modern.amd.js",
@@ -26,5 +26,8 @@
 	},
 	"dependencies": {
 		"sky-core": "^0.6.2"
-	}
+	},
+	"files":[
+		"dist"
+	]
 }
