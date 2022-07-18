@@ -3,6 +3,7 @@ import { loadCSS } from "sky-core";
 import { loadScript } from "sky-core";
 
 var modules = {};
+var promises = {};
 
 var DEFINED = 2;
 var RESOLVED = 3;
@@ -11,19 +12,21 @@ function Module(src) {
 	this.url = src;
 	this.exports = {};
 }
-Module.prototype.init = function(stack) {
+Module.prototype.init = function (stack) {
 	if (stack.indexOf(this) >= 0) {
 		return;
 	}
 	stack.push(this);
-	var values = this.deps.map(function(dep) {
+	var values = this.deps.map(function (dep) {
 		switch (dep) {
+			case 'require':
+				return null;
 			case 'module':
 				return this;
 			case 'exports':
 				return this.exports;
 		}
-		var url = new URL(dep, this.url);
+		var url = new URL(dep + ".js", this.url);
 		var href = url.href;
 		url = null;
 		var module = modules[href];
@@ -40,7 +43,7 @@ Module.prototype.init = function(stack) {
 	this.status = RESOLVED;
 };
 
-window.define = function(deps, initor) {
+window.define = function (deps, initor) {
 	var src = document.currentScript.src;
 	var module = modules[src];
 	if (module) return;
@@ -51,9 +54,9 @@ window.define = function(deps, initor) {
 	modules[src] = module;
 };
 
-window.__rollup_dynamic_import__ = function(src, base, deps, css, imgs) {
+window.__rollup_dynamic_import__ = function (src, base, deps, css, imgs) {
 	var rel = new URL(base, __rollup_baseURI__);
-	var url = new URL(src, rel);
+	var url = new URL(src + ".js", rel);
 	var href = url.href;
 	rel = null;
 	url = null;
@@ -63,7 +66,7 @@ window.__rollup_dynamic_import__ = function(src, base, deps, css, imgs) {
 	css.forEach(preloadCSS, ps);
 	imgs.forEach(preloadImg, ps);
 	ps.push(p1);
-	return Promise.all(ps).then(function(modules) {
+	return Promise.all(ps).then(function (modules) {
 		var module = modules.pop();
 		if (module.status === DEFINED) {
 			module.init([]);
@@ -89,11 +92,11 @@ function preloadImg(img) {
 }
 
 function dynamicImport(src) {
-	var module = modules[src];
-	if (module) {
-		return module.promise;
+	var promise = promises[src];
+	if (promise) {
+		return promise;
 	}
-	return loadScript(src).then(function() {
+	return promises[src] = loadScript(src).then(function () {
 		var module = modules[src];
 		if (!module) {
 			throw new URIError("Fail to run script: " + src);
