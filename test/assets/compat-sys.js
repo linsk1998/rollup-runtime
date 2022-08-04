@@ -1,5 +1,5 @@
 System.register([
-	'./modern-sys-dep.js'
+	'./compat-sys-dep.js'
 ], function(exports) {
 	'use strict';
 	var dep;
@@ -9,17 +9,17 @@ System.register([
 			dep = modernAmdDep.dep;
 		}],
 		execute: function() {
-			QUnit.test('modern-sys', function(assert) {
+			QUnit.test('compat-sys', function(assert) {
 				order++;
 				assert.ok(order === 2, 'order2');
 				assert.ok(dep === 'dep', dep);
 			});
 
-			QUnit.test('modern-css', function(assert) {
+			QUnit.test('compat-css', function(assert) {
 				var href = document.styleSheets[1].href;
 				assert.ok(href === new URL("./assets/style.css", location).href, href);
 			});
-			QUnit.asyncTest('modern-image', function(assert) {
+			QUnit.asyncTest('compat-image', function(assert) {
 				expect(3);
 				// QUnit.stop(2);
 				var t1 = new Date();
@@ -48,10 +48,10 @@ System.register([
 				png.src = "./assets/image.png";
 			});
 
-			QUnit.asyncTest('modern-dynamic', function(assert) {
+			QUnit.asyncTest('compat-dynamic', function(assert) {
 				expect(1);
 				__rollup_dynamic_import__(
-					"./modern-sys-dynamic.js", "./assets/modern-sys.js", [], [], []
+					"./compat-sys-dynamic.js", "./assets/compat-sys.js", [], [], []
 				).then(function(module) {
 					assert.ok(module.dynamic === "dynamic", "dynamic");
 					QUnit.start();
@@ -62,13 +62,13 @@ System.register([
 				expect(2);
 				QUnit.stop(1);
 				__rollup_dynamic_import__(
-					"./404.js", "./assets/modern-sys.js", [], [], []
+					"./404.js", "./assets/compat-sys.js", [], [], []
 				).then(undefined, function (e) {
 					assert.ok(e instanceof Error, e.message);
 					QUnit.start();
 				});
 				__rollup_dynamic_import__(
-					"./syntax.js", "./assets/modern-sys.js", [], [], []
+					"./syntax.js", "./assets/compat-sys.js", [], [], []
 				).then(undefined, function (e) {
 					assert.ok(e instanceof Error, e.message);
 					QUnit.start();

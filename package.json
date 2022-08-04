@@ -1,6 +1,6 @@
 {
 	"name": "rollup-runtime",
-	"version": "0.0.2",
+	"version": "0.0.4",
 	"description": "module runtime for rollup",
 	"module": "dist/rollup-runtime-es2015-esm",
 	"scripts": {
@@ -21,11 +21,12 @@
 		"@rollup/plugin-alias": "^3.1.9",
 		"@rollup/plugin-inject": "^4.0.4",
 		"rollup": "^2.75.6",
+		"rollup-plugin-es3ify": "^0.0.4",
 		"rollup-plugin-import": "^1.0.2",
 		"rollup-plugin-polyfill-inject": "^1.0.4"
 	},
 	"dependencies": {
-		"sky-core": "^0.6.2"
+		"sky-core": "^0.7.1"
 	},
 	"files": [
 		"dist"

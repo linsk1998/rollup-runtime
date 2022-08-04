@@ -7,7 +7,8 @@ module.exports = {
 	input: "src/esm.js",
 	output: {
 		file: 'dist/rollup-runtime-es2015-esm.js',
-		format: 'iife'
+		format: 'iife',
+		strict: false
 	},
 	plugins: [
 		alias({

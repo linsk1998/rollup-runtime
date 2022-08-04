@@ -111,9 +111,7 @@ module.exports=[
 			// "localStorage": "sky-core/polyfill/localStorage",
 			// "sessionStorage": "sky-core/polyfill/sessionStorage",
 			// 'Event': "sky-core/polyfill/Event",
-		},
-		exclude: [
-		]
+		}
 	}),
 	//以下是prototype的修改
 	polyfill({
@@ -182,14 +180,20 @@ module.exports=[
 			// DOM
 			".rules": "sky-core/polyfill/CSSStyleSheet/prototype/rules",
 			".styleSheet": "sky-core/polyfill/HTMLLinkElement/prototype/styleSheet",
+			'document.currentScript': "sky-core/polyfill/document/currentScript",
 		},
 		exclude: [
 			"**/node_modules/sky-core/polyfill/**",
 			"**/node_modules/sky-core/polyfill-modern/**",
 			"**/node_modules/sky-core/polyfill-compat/**",
-			"**/node_modules/core-js/**",
-			"**/node_modules/@babel/**",
-			"**/node_modules/@swc/**"
+
+			"**/node_modules/@swc/**/*",
+			"**/node_modules/@babel/**/*",
+			"**/node_modules/regenerator-runtime/**/*",
+			"**/node_modules/tslib/**/*",
+			"**/node_modules/core-js/**/*",
+			"**/node_modules/reflect-metadata/**/*",
+			"**/node_modules/lodash-es/**/*",
 		]
 	}),
 	inject({

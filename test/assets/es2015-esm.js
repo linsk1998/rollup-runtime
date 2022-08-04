@@ -16,28 +16,28 @@ QUnit.asyncTest('es2015-image', function (assert) {
 	// QUnit.stop(2);
 	var t1 = new Date();
 	var gif = new Image();
-	gif.src = "./assets/image.gif";
 	gif.onload = function () {
 		var t2 = new Date();
 		assert.ok(t2 - t1 < 20, "gif");
 		QUnit.start();
 	};
+	gif.src = "./assets/image.gif";
 
 	var jpg = new Image();
-	jpg.src = "./assets/image.jpg";
 	jpg.onload = function () {
 		var t2 = new Date();
 		assert.ok(t2 - t1 < 20, "jpg");
 		QUnit.start();
 	};
+	jpg.src = "./assets/image.jpg";
 
 	var png = new Image();
-	png.src = "./assets/image.png";
 	png.onload = function () {
 		var t2 = new Date();
 		assert.ok(t2 - t1 < 20, "png");
 		QUnit.start();
 	};
+	png.src = "./assets/image.png";
 });
 
 QUnit.asyncTest('es2015-dynamic', function (assert) {

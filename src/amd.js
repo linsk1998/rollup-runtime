@@ -43,14 +43,29 @@ Module.prototype.init = function (stack) {
 	this.status = RESOLVED;
 };
 
-window.define = function (deps, initor) {
+window.define = function (arg1, arg2, arg3) {
 	var src = document.currentScript.src;
 	var module = modules[src];
 	if (module) return;
 	module = new Module(src);
 	module.status = DEFINED;
-	module.deps = deps;
-	module.initor = initor;
+	switch (arguments.length) {
+		case 1:
+			module.initor = arg1;
+			module.deps = [];
+			break;
+		case 2:
+			module.deps = arg1;
+			module.initor = arg2;
+			break;
+		case 3:
+			module.name = arg1;
+			module.deps = arg2;
+			module.initor = arg3;
+			break;
+		default:
+			throw new Error();
+	}
 	modules[src] = module;
 };
 

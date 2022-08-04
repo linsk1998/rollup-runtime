@@ -1,20 +1,20 @@
 define([
-	'./modern-amd-dep'
+	'./compat-amd-dep'
 ], function(modernAmdDep) {
 	'use strict';
 	var dep = modernAmdDep.dep;
 
-	QUnit.test('modern-amd', function(assert) {
+	QUnit.test('compat-amd', function(assert) {
 		order++;
 		assert.ok(order === 2, 'order2');
 		assert.ok(dep === 'dep', dep);
 	});
 
-	QUnit.test('modern-css', function(assert) {
+	QUnit.test('compat-css', function(assert) {
 		var href = document.styleSheets[1].href;
 		assert.ok(href === new URL("./assets/style.css", location).href, href);
 	});
-	QUnit.asyncTest('modern-image', function(assert) {
+	QUnit.asyncTest('compat-image', function(assert) {
 		expect(3);
 		// QUnit.stop(2);
 		var t1 = new Date();
@@ -43,10 +43,10 @@ define([
 		png.src = "./assets/image.png";
 	});
 
-	QUnit.asyncTest('modern-dynamic', function(assert) {
+	QUnit.asyncTest('compat-dynamic', function(assert) {
 		expect(1);
 		__rollup_dynamic_import__(
-			"./modern-amd-dynamic", "./assets/modern-amd.js", [], [], []
+			"./compat-amd-dynamic", "./assets/compat-amd.js", [], [], []
 		).then(function(module) {
 			assert.ok(module.dynamic === "dynamic", "dynamic");
 			QUnit.start();
@@ -57,13 +57,13 @@ define([
 		expect(2);
 		QUnit.stop(1);
 		__rollup_dynamic_import__(
-			"./404", "./assets/modern-amd.js", [], [], []
+			"./404", "./assets/compat-amd.js", [], [], []
 		).then(undefined, function (e) {
 			assert.ok(e instanceof Error, e.message);
 			QUnit.start();
 		});
 		__rollup_dynamic_import__(
-			"./syntax", "./assets/modern-amd.js", [], [], []
+			"./syntax", "./assets/compat-amd.js", [], [], []
 		).then(undefined, function (e) {
 			assert.ok(e instanceof Error, e.message);
 			QUnit.start();

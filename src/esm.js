@@ -3,7 +3,7 @@ import dynamicImport from "./import";
 import preloadModule from "./preloadModule";
 import prefetch from "./prefetch";
 import preloadImage from "./preloadImage";
-import { loadCSS } from "sky-core";
+import loadCSS from "./loadCSS";
 import { supportModulePreload, supportPrefetch } from "./supports";
 
 var preModule = supportModulePreload ?

@@ -1,4 +1,5 @@
 const polyfill = require("rollup-plugin-polyfill-inject");
+const inject = require("@rollup/plugin-inject");
 module.exports=[
 	polyfill({
 		modules: {
@@ -109,10 +110,7 @@ module.exports=[
 			// "localStorage": "sky-core/polyfill/localStorage",
 			// "sessionStorage": "sky-core/polyfill/sessionStorage",
 			// 'Event': "sky-core/polyfill/Event",
-		},
-		exclude: [
-			"qunit/helpers/*"
-		]
+		}
 	}),
 	//以下是prototype的修改
 	polyfill({
@@ -158,35 +156,47 @@ module.exports=[
 			// ".toLocaleFormat": "sky-core/polyfill/Date/prototype/toLocaleFormat",
 			// ".toISOString": "sky-core/polyfill/Date/prototype/toISOString",
 			//ES5 String
-			// ".trim": "sky-core/polyfill/String/prototype/trim",
+			".trim": "sky-core/polyfill/String/prototype/trim",
 			//ES6 String
-			// ".startsWith": "sky-core/polyfill/String/prototype/startsWith",
-			// ".endsWith": "sky-core/polyfill/String/prototype/endsWith",
-			// ".repeat": "sky-core/polyfill/String/prototype/repeat",
+			".startsWith": "sky-core/polyfill/String/prototype/startsWith",
+			".endsWith": "sky-core/polyfill/String/prototype/endsWith",
+			".repeat": "sky-core/polyfill/String/prototype/repeat",
 			// ".codePointAt": "sky-core/polyfill/String/prototype/codePointAt",
 			//ES2017.String
-			// ".padStart": "sky-core/polyfill/String/prototype/padStart",
-			// ".padEnd": "sky-core/polyfill/String/prototype/padEnd",
+			".padStart": "sky-core/polyfill/String/prototype/padStart",
+			".padEnd": "sky-core/polyfill/String/prototype/padEnd",
 			//ES2018.Promise
 			"Promise": "sky-core/polyfill/Promise/prototype/finally",
 			//ES2019.String
-			// ".trimStart": "sky-core/polyfill/String/prototype/trimStart",
-			// ".trimEnd": "sky-core/polyfill/String/prototype/trimEnd",
+			".trimStart": "sky-core/polyfill/String/prototype/trimStart",
+			".trimEnd": "sky-core/polyfill/String/prototype/trimEnd",
 			// ".trimLeft": "sky-core/polyfill/String/prototype/trimLeft",
 			// ".trimRight": "sky-core/polyfill/String/prototype/trimRight",
 			//ES2020.String
 			// ".matchAll": "sky-core/polyfill/String/prototype/matchAll",
 			//ESNext.String
-			// ".replaceAll": "sky-core/polyfill/String/prototype/replaceAll",
+			".replaceAll": "sky-core/polyfill/String/prototype/replaceAll",
 			// DOM
 			// ".rules": "sky-core/polyfill/CSSStyleSheet/prototype/rules",
 			// ".styleSheet": "sky-core/polyfill/HTMLLinkElement/prototype/styleSheet",
 		},
-		include: [
-			"qunit/**"
-		],
 		exclude: [
-			"**/node_modules/sky-core/**"
+			"**/node_modules/sky-core/polyfill/**",
+			"**/node_modules/sky-core/polyfill-modern/**",
+			"**/node_modules/sky-core/polyfill-compat/**",
+
+			"**/node_modules/@swc/**/*",
+			"**/node_modules/@babel/**/*",
+			"**/node_modules/regenerator-runtime/**/*",
+			"**/node_modules/tslib/**/*",
+			"**/node_modules/core-js/**/*",
+			"**/node_modules/reflect-metadata/**/*",
+			"**/node_modules/lodash-es/**/*",
 		]
+	}),
+	inject({
+		"modules": {
+			"Symbol.iterator": "sky-core/pure/Symbol/iterator",
+		}
 	})
 ]
