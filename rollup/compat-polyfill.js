@@ -142,9 +142,9 @@ module.exports=[
 			],
 			//ES6 Array
 			// ".copyWithin": "sky-core/polyfill/Array/prototype/copyWithin",
-			// ".fill": "sky-core/polyfill/Array/prototype/fill",
-			// ".find": "sky-core/polyfill/Array/prototype/find",
-			// ".findIndex": "sky-core/polyfill/Array/prototype/findIndex",
+			".fill": "sky-core/polyfill/Array/prototype/fill",
+			".find": "sky-core/polyfill/Array/prototype/find",
+			".findIndex": "sky-core/polyfill/Array/prototype/findIndex",
 			// ".entries": "sky-core/polyfill/Array/prototype/entries",
 			// ".keys": "sky-core/polyfill/Array/prototype/keys",
 			// ".values": "sky-core/polyfill/Array/prototype/values",

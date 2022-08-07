@@ -1,6 +1,7 @@
 import preloadImage from "./preloadImage";
 import { loadCSS } from "sky-core";
 import { loadScript } from "sky-core";
+import "sky-core/polyfill/console";
 
 var modules = {};
 

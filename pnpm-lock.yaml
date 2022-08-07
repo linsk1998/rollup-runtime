@@ -6,11 +6,12 @@ specifiers:
   rollup: ^2.75.6
   rollup-plugin-es3ify: ^0.0.4
   rollup-plugin-import: ^1.0.2
+  rollup-plugin-polyfill: ^3.0.0
   rollup-plugin-polyfill-inject: ^1.0.4
-  sky-core: ^0.7.1
+  sky-core: ^0.7.13
 
 dependencies:
-  sky-core: 0.7.1
+  sky-core: 0.7.13
 
 devDependencies:
   '@rollup/plugin-alias': 3.1.9_rollup@2.77.2
@@ -18,6 +19,7 @@ devDependencies:
   rollup: 2.77.2
   rollup-plugin-es3ify: 0.0.4
   rollup-plugin-import: 1.0.2
+  rollup-plugin-polyfill: 3.0.0
   rollup-plugin-polyfill-inject: 1.0.4_rollup@2.77.2
 
 packages:
@@ -306,6 +308,12 @@ packages:
       - rollup
     dev: true
 
+  /rollup-plugin-polyfill/3.0.0:
+    resolution: {integrity: sha512-LfJ1OR/wJrJdNDVNrdhVm7CgENfaNoQlFYMaQ0vlQH3zO+BMVrBMWDX9k6HVcr9gHsKbthrkiBzWRfFU9fr0hQ==}
+    dependencies:
+      magic-string: 0.25.9
+    dev: true
+
   /rollup/2.77.2:
     resolution: {integrity: sha512-m/4YzYgLcpMQbxX3NmAqDvwLATZzxt8bIegO78FZLl+lAgKJBd1DRAOeEiZcKOIOPjxE6ewHWHNgGEalFXuz1g==}
     engines: {node: '>=10.0.0'}
@@ -318,8 +326,8 @@ packages:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
     dev: true
 
-  /sky-core/0.7.1:
-    resolution: {integrity: sha512-wWOrG1h7MoSDevmeHsSjcMWzre0mpSd/d0YbE35a030UilCkva7+XcBQoZuH+GLlMc4Y3LUM9+8hfSuHc8TjsA==}
+  /sky-core/0.7.13:
+    resolution: {integrity: sha512-zjcKVNpS57i3T/5JIuVHK726lx+RQPCMCOQTFF0wCBdP76AdrILyjJD7rkxV9dZFN0T/YPyS2YINYNbgj4yrgg==}
     dev: false
 
   /slash/3.0.0:
