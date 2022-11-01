@@ -4,6 +4,9 @@ try {
 } catch (e) {
 	window.__rollup_modules__ = Object.create(null);
 	dynamicImport = (url) => {
+		if(!navigator.onLine) {
+			return Promise.reject(new URIError("Network offline."));
+		}
 		var escape = JSON.stringify(url);
 		var script = Object.assign(document.createElement('script'), {
 			type: 'module',
