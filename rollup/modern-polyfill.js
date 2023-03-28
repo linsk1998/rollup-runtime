@@ -181,6 +181,7 @@ module.exports=[
 			".rules": "sky-core/polyfill/CSSStyleSheet/prototype/rules",
 			".styleSheet": "sky-core/polyfill/HTMLLinkElement/prototype/styleSheet",
 			'document.currentScript': "sky-core/polyfill/document/currentScript",
+			'document.scripts': "sky-core/polyfill/document/scripts",
 		},
 		exclude: [
 			"**/node_modules/sky-core/polyfill/**",

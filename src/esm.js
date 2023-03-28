@@ -1,4 +1,3 @@
-import "./nomodule";
 import dynamicImport from "./import";
 import preloadModule from "./preloadModule";
 import prefetch from "./prefetch";
@@ -15,9 +14,7 @@ var preModule = supportModulePreload ?
 function nopre() {
 	return Promise.resolve();
 }
-var preImage = supportPrefetch ?
-	prefetch :
-	preloadImage
+var preImage = preloadImage
 
 var promises = {};
 window.__rollup_dynamic_import__ = function (src, base, deps, css, imgs) {

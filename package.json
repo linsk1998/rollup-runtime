@@ -1,6 +1,6 @@
 {
 	"name": "rollup-runtime",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"description": "module runtime for rollup",
 	"module": "dist/rollup-runtime-es2015-esm",
 	"scripts": {

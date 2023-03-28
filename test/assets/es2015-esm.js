@@ -26,6 +26,7 @@ QUnit.asyncTest('es2015-image', function (assert) {
 	var jpg = new Image();
 	jpg.onload = function () {
 		var t2 = new Date();
+		console.log(t2 - t1);
 		assert.ok(t2 - t1 < 20, "jpg");
 		QUnit.start();
 	};
@@ -34,6 +35,7 @@ QUnit.asyncTest('es2015-image', function (assert) {
 	var png = new Image();
 	png.onload = function () {
 		var t2 = new Date();
+		console.log(t2 - t1);
 		assert.ok(t2 - t1 < 20, "png");
 		QUnit.start();
 	};

@@ -4,7 +4,6 @@ rollup-runtime is a module loader for rollup dist. support amd systemjs and esm.
 
 # Why not native esm
 
-* nomodule polyfill;
 * dynamic import polyfill;
 * module,css,asset preload;
 
@@ -17,12 +16,6 @@ __rollup_dynamic_import__(src:string, base:string, deps:string[], css:string[], 
 ```
 
 # With Polyfill
-
-## supports es6-module
-
-```
-nomodule
-```
 
 ## ie 6-8
 
@@ -45,7 +38,7 @@ document.head
 queueMicrotask
 ```
 
-## other
+## other unsupport esm
 
 ```
 Array.isArray
@@ -63,6 +56,7 @@ URLSearchParams
 console
 document.currentScript
 document.head
+document.scripts
 location
 queueMicrotask
 ```
