@@ -8,10 +8,10 @@ specifiers:
   rollup-plugin-import: ^1.0.2
   rollup-plugin-polyfill: ^3.0.0
   rollup-plugin-polyfill-inject: ^1.0.4
-  sky-core: ^0.7.15
+  sky-core: ^0.10.0
 
 dependencies:
-  sky-core: 0.7.15
+  sky-core: 0.10.0
 
 devDependencies:
   '@rollup/plugin-alias': 3.1.9_rollup@2.77.2
@@ -326,8 +326,8 @@ packages:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
     dev: true
 
-  /sky-core/0.7.15:
-    resolution: {integrity: sha512-5NKba49/VWfF0zeXgvTlecPaN01RRiYhBuruTLNB4M+Hy8vPAm1fWWfb5BAuo+9GdoBTkFzz62hMCiDUwAzjyg==}
+  /sky-core/0.10.0:
+    resolution: {integrity: sha512-B6FB0oHwGWNA0OP8zSnP450756CC49JZeks0Z4nyF0kuRfptw2t7ZTtJL2IpJ/N0yZxA7w90SAAK0ob3RG5olg==}
     dev: false
 
   /slash/3.0.0:
